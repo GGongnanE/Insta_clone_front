@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box {
+            width: 120px;
+            height: 120px;
+            background-color: red;
+        }
+
+        /* .box와 .on을 함께 가지고 있는 경우 */
+        .box.on{
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="box on">
+
+    </div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+
+
+<script>
+
+    let userName = '착한호랑이';   // string
+    const userName2 = '바뀌면 안돼'; 
+    const age = 43;
+    let girlFriend;
+    const money = null;
+
+
+    console.log('userName : ' + userName)
+    console.log('age : ' + typeof(age))
+    console.log('girlfriend : ' + girlFriend)
+    console.log('money : ' + money)
+
+
+    console.log(2 * 3)
+    console.log(userName === '나쁜호랑이')
+
+    if (userName === '착한호2랑이') {
+        alert('맞아용')
+    } else {
+        alert('틀렸습니다~~')
+    }
+
+    // 정의 -> 조건 입력 -> 조건 부합 시 갱신 
+    // for (let i = 0; i < 10; i++) {
+    //     console.log(i + '번이야');
+    // }
+    
+    const box = document.querySelector('.box');
+    // const box2 = document.querySelectorAll('.box2');
+
+    console.log(box)
+
+    box.addEventListener('click', function(){
+        console.log('눌렀어')
+        // box.style.background = "blue"
+        // box.remove('on')
+        // box.classList.remove('on')
+        box.classList.toggle('on')          // on/off
+    });
+
+
+
+
+
+</script>
+</body>
+</html>

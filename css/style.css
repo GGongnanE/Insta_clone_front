@@ -130,6 +130,10 @@ body {
     border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
+#header.on {
+    position: fixed;
+}
+
 /* 높이(height)는 자식 요소에게 선언한다. */
 #header .inner {
     width: 975px;
@@ -138,6 +142,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.5s;
+}
+
+#header.on .inner {
+    height: 52px;
 }
 
 #header .inner .logo > a {
@@ -168,6 +177,7 @@ body {
     position: absolute;
     right: -15px;
     top: -4px;
+    transition: all 0.5s;
 }
 
 #header .inner .logo div {
@@ -176,6 +186,16 @@ body {
 
 #header .inner .logo div:nth-child(2) {
     transform: translateY(2px) ;
+    transition: all 0.5s;
+}
+
+/* 스크롤을 내릴 경우 header의 로고를 사라지게 만든다. */
+#header.on .inner .logo div:nth-child(2) {
+    opacity: 0;
+}
+
+#header.on .inner .logo .sprite_insta_icon:after {
+    opacity: 0;
 }
 
 /* 검색 부분 */
@@ -326,6 +346,10 @@ body {
     cursor: pointer;
 }
 
+.heart_btn.on .sprite_heart_icon_outline {
+    background: url('../imgs/background01.png') no-repeat -26px -261px;
+}
+
 
 /* Comments */
 .contents .comment_container {
@@ -396,6 +420,12 @@ body {
     position: absolute;
     right: 0;
     top: 0;
+}
+
+.side_box.on {
+    position: fixed;  /*기준점이 다르니 주의 fixed는 브라우저가 기준*/
+    top: 80px;
+    
 }
 
 .side_box .profile_thumb {
@@ -482,6 +512,7 @@ body {
 
 
 .hidden_menu {
+    display: none;
     width: 600px;
     /* background: red; */
     position: absolute;
@@ -559,10 +590,16 @@ body {
     .side_box {
         display: none;
     }
+
+    .hidden_menu {
+        display: block;
+    }
 }
 
 @media screen and (max-width:650px) {
     #header .search_box {
         display: none;
     }
+    
 }
+
