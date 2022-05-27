@@ -259,7 +259,7 @@ body {
 }
 
 .contents {
-    width: 614px;
+    max-width: 614px;  /* js를 통해서 사이즈 조정 -> 최대 값만 설정함.*/
     border: 1px solid rgba(0,0,0,0.09);
     border-radius: 3px;
     margin-bottom: 60px;
@@ -477,4 +477,92 @@ body {
     height: 182px;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+
+
+.hidden_menu {
+    width: 600px;
+    /* background: red; */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.09);
+    border-radius: 3px;
+}
+
+.hidden_menu .scroll_inner {
+    height: 100px;
+    width: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.hidden_menu .scroll_inner .user {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 15px;
+    justify-content: space-between;
+}
+
+.hidden_menu .scroll_inner .user .user_id {
+    padding-top: 5px;
+    font-size: 14px;
+}
+
+.hidden_menu .thumb_img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.hidden_menu .thumb_img img {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
+
+
+/* Reactive Web */
+@media screen and (max-width:1000px) {  /* and 이후 띄어쓰기 필수*/
+    #header .inner {
+        width: 97.5%;
+    }
+
+    #main_container {
+        padding-top: 220px;
+    }
+
+    #main_container .inner {
+        width: 93.5%;
+    }
+
+    .contents_box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .side_box {
+        display: none;
+    }
+}
+
+@media screen and (max-width:650px) {
+    #header .search_box {
+        display: none;
+    }
 }
