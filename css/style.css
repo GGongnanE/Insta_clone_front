@@ -365,7 +365,7 @@ body {
     font-size: 14px;
 }
 
-.contents.comment_container .comment-detail {
+.contents .comment_container .comment-detail {
     display: flex;
 }
 

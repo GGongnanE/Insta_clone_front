@@ -87,6 +87,9 @@ function delegationFunc(e) {
             }
         });
 
+        // 처리 완료 시, html 댓글 창 공백 처리 
+        document.querySelector('#add-comment-post37 > input[type=text]').value = '';
+
     } else if (element.matches('[data-name="more"]')) {
         console.log('더보기');
     }
