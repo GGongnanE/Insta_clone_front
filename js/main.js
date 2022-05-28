@@ -90,8 +90,29 @@ function delegationFunc(e) {
         // 처리 완료 시, html 댓글 창 공백 처리 
         document.querySelector('#add-comment-post37 > input[type=text]').value = '';
 
-    } else if (element.matches('[data-name="more"]')) {
-        console.log('더보기');
+    } else if (element.matches('[data-name="comment_delete"]')) {
+        
+        $.ajax({
+            type: 'GET',
+            url: 'data/delete.json',
+            data: {
+                'pk':37
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === "1") {
+                    let comment = document.querySelector('.comment-detail');
+                    comment.remove();
+                }
+            },
+            error: function(request, status, error) {
+                // TODO : 에러 처리 구현 필요 
+                alter('에러가 발생했습니다. 관리자에게 문의하세요.')
+            }
+
+        });
+
+
     }
 
     element.classList.toggle('on');
