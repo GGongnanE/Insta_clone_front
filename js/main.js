@@ -162,6 +162,12 @@ function scrollFunc() {
     // console.log(scrollY);
     // 구형 브라우저 에서는 pageYOffset를 사용했었음.  
 
+    let scrollHeight = scrollY + window.innerHeight;
+    let documentHeight = document.body.scrollHeight;
+
+    console.log('scrollHeight : ' + scrollHeight);
+    console.log('documentHeight : ' + documentHeight);
+
     if (scrollY >= 10) {
         header.classList.add('on');
 
@@ -178,7 +184,49 @@ function scrollFunc() {
             sidebox.removeAttribute('style');
         }
     }
+
+    // 무한 스크롤
+    if (scrollHeight >= documentHeight) {
+        let page = document.querySelector('#page').value;
+        document.querySelector('#page').value = parseInt(page) + 1;
+
+        callMorePostAjax(page);
+
+        // 무한 스크롤 제어 
+        if (page > 5) {
+            return; 
+        }
+    }
 }
+
+
+function callMorePostAjax(page) {
+    
+    // 무한 스크롤 제어 
+    if (page > 5) {
+        return; 
+    }
+
+    $.ajax({
+        type: 'GET',
+        url: './post.html',
+        data: {
+            "page" : page
+        },
+        dataType: 'html',
+        success: addMorePostAjax,
+        error: function(request, status, error) {
+            // TODO : 에러 처리 구현 필요 
+            alter('에러가 발생했습니다. 관리자에게 문의하세요.')
+        }
+    });
+}
+
+function addMorePostAjax(data) {
+
+    delegation.insertAdjacentHTML('beforeend', data);
+}
+
 
 // 새로고침 시, 첫 스크롤로 돌아가도록 설정 
 setTimeout(function() {
