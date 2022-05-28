@@ -109,10 +109,29 @@ function delegationFunc(e) {
                 // TODO : 에러 처리 구현 필요 
                 alter('에러가 발생했습니다. 관리자에게 문의하세요.')
             }
-
         });
 
+    } else if (element.matches('[data-name="follow"]')) {
 
+        $.ajax({
+            type: 'GET',
+            url: 'data/follow.json',
+            data: {
+                'pk':37
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status) {
+                    document.querySelector('input.follow').value = "팔로잉";
+                } else {
+                    document.querySelector('input.follow').value = "팔로워";
+                }
+            },
+            error: function(request, status, error) {
+                // TODO : 에러 처리 구현 필요 
+                alter('에러가 발생했습니다. 관리자에게 문의하세요.')
+            }
+        });
     }
 
     element.classList.toggle('on');
